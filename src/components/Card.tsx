@@ -4,6 +4,7 @@ import { Swipeable, direction } from 'react-deck-swiper';
 import MyButton from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
+import CardButtons from './CardButtons';
 
 export interface CardInterface {
   id: number;
@@ -17,8 +18,6 @@ export interface CardProps {
 }
 
 const Card = ({ obj, handleSwipe }: CardProps) => {
-  // const myRef = useRef<HTMLDivElement>(null);
-
   const onSwipe = (swipeDirection: direction) => {
     if (swipeDirection === direction.RIGHT) {
       // handle right swipe
@@ -30,7 +29,7 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
     if (swipeDirection === direction.LEFT) {
       // handle left swipe
       console.log('left swipe');
-      handleSwipe('left');
+      handleSwipe(swipeDirection);
 
       return;
     }
@@ -38,10 +37,13 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
 
   const onButtonSwipe = (swipeDirection: direction) => {
     // FIXME : must find a way to call the swipe function inside the TinderCard
-    /* const node = myRef.current;
-    if (node) node.swipe(direction); */
+
     onSwipe(swipeDirection);
   };
+
+  // const renderButtons = ({ right, left }) => (
+  //   <CardButtons right={right} left={left} />
+  // );
 
   return (
     <div className='my-1 max-w-sm'>
@@ -52,7 +54,10 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
           alt={obj.title}
         />
         <div className='absolute bottom-1'>
-          <Swipeable onSwipe={onSwipe}>
+          <Swipeable
+            onSwipe={onSwipe}
+            /* renderButtons={renderButtons} */
+          >
             <Box title={obj.title} fullBorder={true}>
               <p>{`id: ${obj.id}`}</p>
               <p>{`title: ${obj.title}`}</p>
