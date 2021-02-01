@@ -3,14 +3,13 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import Card, { CardInterface } from './components/Card';
 import Box from './components/Box';
-import MyButton from './components/MyButton';
-import Heart from './icons/Heart';
-import X from './icons/X';
+import { direction } from 'react-deck-swiper';
 
 class App extends Component {
   state = {
     loading: false,
     responses: [] as CardInterface[],
+    selectedCards: [] as CardInterface[],
     index: 0,
   };
 
@@ -24,35 +23,39 @@ class App extends Component {
     });
   }
 
-  handleSwipe = (direction: string): void => {
-    console.log('handleSwipe direction: ' + direction);
+  handleSwipe = (swipeDirection: direction): void => {
+    console.log('handleSwipe direction: ' + swipeDirection);
+    const selectedCards = [...this.state.selectedCards];
     let index = this.state.index;
-    if (index < this.state.responses.length - 1) index++;
-    this.setState({ index });
+
+    if (index < this.state.responses.length) {
+      if (swipeDirection === direction.RIGHT) {
+        selectedCards.push(this.state.responses[index]);
+        this.setState({ selectedCards });
+      }
+      index++;
+      this.setState({ index });
+    }
   };
 
   render() {
     const resp = this.state.responses[this.state.index];
-    console.log(resp);
+    const reachedLimit = this.state.index >= this.state.responses.length;
     return (
       <div className='mx-auto'>
         {this.state.loading || this.state.responses.length === 0 ? (
           <div>Loading...</div>
         ) : (
-          <Box title='ESG App'>
-            <Card key={resp.title} obj={resp} handleSwipe={this.handleSwipe} />
-            <div className='flex justify-between'>
-              <MyButton
-                icon={<X color='red' />}
-                color='white'
-                onClick={() => this.handleSwipe('left')}
-              ></MyButton>
-              <MyButton
-                icon={<Heart color='green' />}
-                color='white'
-                onClick={() => this.handleSwipe('right')}
-              ></MyButton>
-            </div>
+          <Box title='ESGR App'>
+            {reachedLimit ? (
+              <p>Looks like your have seen all the cards</p>
+            ) : (
+              <Card
+                key={resp.title}
+                obj={resp}
+                handleSwipe={this.handleSwipe}
+              />
+            )}
           </Box>
         )}
       </div>

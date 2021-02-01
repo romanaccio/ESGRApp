@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "postcss": "^7",
     "react": "^17.0.1",
+    "react-deck-swiper": "^1.0.9",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "react-tinder-card": "^1.3.1",

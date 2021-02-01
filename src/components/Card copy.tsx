@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Box from './Box';
-import { Swipeable, direction } from 'react-deck-swiper';
+import TinderCard from 'react-tinder-card';
 import MyButton from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
@@ -19,28 +19,16 @@ export interface CardProps {
 const Card = ({ obj, handleSwipe }: CardProps) => {
   // const myRef = useRef<HTMLDivElement>(null);
 
-  const onSwipe = (swipeDirection: direction) => {
-    if (swipeDirection === direction.RIGHT) {
-      // handle right swipe
-      console.log('right swipe');
-      handleSwipe(swipeDirection);
-      return;
-    }
-
-    if (swipeDirection === direction.LEFT) {
-      // handle left swipe
-      console.log('left swipe');
-      handleSwipe('left');
-
-      return;
-    }
+  const onSwipe = (direction: string) => {
+    console.log('You swiped: ' + direction);
+    handleSwipe(direction);
   };
 
-  const onButtonSwipe = (swipeDirection: direction) => {
+  const onButtonSwipe = (direction: string) => {
     // FIXME : must find a way to call the swipe function inside the TinderCard
     /* const node = myRef.current;
     if (node) node.swipe(direction); */
-    onSwipe(swipeDirection);
+    onSwipe(direction);
   };
 
   return (
@@ -52,12 +40,16 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
           alt={obj.title}
         />
         <div className='absolute bottom-1'>
-          <Swipeable onSwipe={onSwipe}>
+          <TinderCard
+            /* ref={myRef} */
+            onSwipe={onSwipe}
+            preventSwipe={['up', 'down']}
+          >
             <Box title={obj.title} fullBorder={true}>
               <p>{`id: ${obj.id}`}</p>
               <p>{`title: ${obj.title}`}</p>
             </Box>
-          </Swipeable>
+          </TinderCard>
         </div>
       </div>
 
@@ -65,12 +57,12 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
         <MyButton
           icon={<X color='red' />}
           color='white'
-          onClick={() => onButtonSwipe(direction.LEFT)}
+          onClick={() => onButtonSwipe('left')}
         ></MyButton>
         <MyButton
           icon={<Heart color='green' />}
           color='white'
-          onClick={() => onButtonSwipe(direction.RIGHT)}
+          onClick={() => onButtonSwipe('right')}
         ></MyButton>
       </div>
     </div>
