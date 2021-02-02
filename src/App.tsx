@@ -1,5 +1,5 @@
-import axios from 'axios';
-
+// import axios from 'axios';
+import data from './data';
 import React, { Component } from 'react';
 import Card, { CardInterface } from './components/Card';
 import Box from './components/Box';
@@ -14,13 +14,15 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
     this.setState({ loading: true });
-    axios.get(url).then((response) => {
-      const responses = response.data as CardInterface;
-      console.log(responses);
-      this.setState({ responses, loading: false });
-    });
+    // const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
+    // axios.get(url).then((response) => {
+    //   const responses = response.data as CardInterface;
+    //   console.log(responses);
+    //   this.setState({ responses, loading: false });
+    // });
+    const responses = Object.values(data);
+    this.setState({ responses, loading: false });
   }
 
   handleSwipe = (swipeDirection: direction): void => {
@@ -42,7 +44,7 @@ class App extends Component {
     const resp = this.state.responses[this.state.index];
     const reachedLimit = this.state.index >= this.state.responses.length;
     return (
-      <div className='mx-auto'>
+      <div className='mx-auto h-56'>
         {this.state.loading || this.state.responses.length === 0 ? (
           <div>Loading...</div>
         ) : (

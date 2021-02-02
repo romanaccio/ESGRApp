@@ -7,9 +7,9 @@ import X from '../icons/X';
 import CardButtons from './CardButtons';
 
 export interface CardInterface {
-  id: number;
+  image_url: string;
   title: string;
-  url: string;
+  content: string;
 }
 
 export interface CardProps {
@@ -46,11 +46,13 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
   // );
 
   return (
-    <div className='my-1 max-w-sm'>
+    <div className='my-1 max-w-xl'>
       <div className='relative'>
         <img
-          className='h-full w-full object-cover'
-          src={obj.url}
+          // className='min-h-10 min-w-12 max-h-full max-w-full object-cover'
+          style={{ width: '600px', height: '400px' }}
+          className='object-cover'
+          src={obj.image_url}
           alt={obj.title}
         />
         <div className='absolute bottom-1'>
@@ -59,8 +61,7 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
             /* renderButtons={renderButtons} */
           >
             <Box title={obj.title} fullBorder={true}>
-              <p>{`id: ${obj.id}`}</p>
-              <p>{`title: ${obj.title}`}</p>
+              <div className='text-xs overflow-y-scroll'>{obj.content}</div>
             </Box>
           </Swipeable>
         </div>
