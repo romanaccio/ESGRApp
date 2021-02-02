@@ -1,12 +1,13 @@
 import React from 'react';
 // SVG is copied from https://heroicons.dev/
 // NB : thanks to default param values in ES6, I can set values if they are not provided
-const UserIcon = ({ height = 6, width = 6 }) => {
-  // console.log(`height =  ${height} width = ${width}`)
+const UserIcon = ({ small = true }) => {
+  let className = 'w-24 h-24';
+  if (small) className = 'w-8 h-8';
 
   return (
     <svg
-      className={`w-${height} h-${width}`}
+      className={className}
       fill='none'
       stroke='currentColor'
       viewBox='0 0 24 24'

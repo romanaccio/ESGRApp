@@ -3,17 +3,11 @@ import React from 'react';
 export interface BoxInterface {
   title: string;
   children?: any;
-  color?: string;
   fullBorder?: boolean;
 }
 
-const Box = ({
-  title = '',
-  children,
-  color = 'indigo',
-  fullBorder = false,
-}: BoxInterface) => {
-  let decoration = `p-6 max-w-5xl mx-auto bg-${color}-50 rounded-xl flex items-center space-x-4 border-${color}-500`;
+const Box = ({ title = '', children, fullBorder = false }: BoxInterface) => {
+  let decoration = `p-6 max-w-5xl mx-auto bg-indigo-50 rounded-xl flex items-center space-x-4 border-indigo-500`;
   if (fullBorder) decoration += ' border-2';
   else decoration += ' border-l-2';
   return (

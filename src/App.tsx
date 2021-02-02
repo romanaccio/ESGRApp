@@ -44,7 +44,7 @@ class App extends Component {
     const resp = this.state.responses[this.state.index];
     const reachedLimit = this.state.index >= this.state.responses.length;
     return (
-      <div className='mx-auto h-56'>
+      <div className='mx-auto p-1'>
         {this.state.loading || this.state.responses.length === 0 ? (
           <div>Loading...</div>
         ) : (

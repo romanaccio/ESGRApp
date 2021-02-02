@@ -47,25 +47,25 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
 
   return (
     <div className='my-1 max-w-xl'>
-      <div className='relative'>
-        <img
-          // className='min-h-10 min-w-12 max-h-full max-w-full object-cover'
-          style={{ width: '600px', height: '400px' }}
-          className='object-cover'
-          src={obj.image_url}
-          alt={obj.title}
-        />
-        <div className='absolute bottom-1'>
-          <Swipeable
-            onSwipe={onSwipe}
-            /* renderButtons={renderButtons} */
-          >
+      <Swipeable
+        onSwipe={onSwipe}
+        fadeThreshold={200}
+        /* renderButtons={renderButtons} */
+      >
+        <div className='relative'>
+          <img
+            style={{ width: '600px', minHeight: '500px' }}
+            className='object-cover'
+            src={obj.image_url}
+            alt={obj.title}
+          />
+          <div className='absolute bottom-1'>
             <Box title={obj.title} fullBorder={true}>
               <div className='text-xs overflow-y-scroll'>{obj.content}</div>
             </Box>
-          </Swipeable>
+          </div>
         </div>
-      </div>
+      </Swipeable>
 
       <div className='flex justify-between'>
         <MyButton
