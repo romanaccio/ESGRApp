@@ -48,9 +48,16 @@ class App extends Component {
         {this.state.loading || this.state.responses.length === 0 ? (
           <div>Loading...</div>
         ) : (
-          <Box title='ESGR App'>
+          <Box title='ESG Revolution'>
             {reachedLimit ? (
-              <p>Looks like your have seen all the cards</p>
+              <div>
+                <p className='font-bold'>
+                  Your have seen all the cards. Your selection:
+                </p>
+                {this.state.selectedCards.map((card) => (
+                  <p>-{card.title}</p>
+                ))}
+              </div>
             ) : (
               <Card
                 key={resp.title}
