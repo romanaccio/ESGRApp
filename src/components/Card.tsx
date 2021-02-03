@@ -1,38 +1,37 @@
 import React from 'react';
 import Box from './Box';
 import { Swipeable, direction } from 'react-deck-swiper';
-import MyButton from './MyButton';
+import MyButton, { MyButtonColor } from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
-import CardButtons from './CardButtons';
+import cardBack from '../img/card_back.png';
 
 export interface CardInterface {
+  id: string;
   image_url: string;
   title: string;
   content: string;
+  grade: number;
+  choice: number;
 }
+
+export const defaultCard: CardInterface = {
+  id: 'xxx',
+  image_url: cardBack,
+  title: 'No more cards',
+  content: '------------Please review your score below-------------',
+  grade: 0,
+  choice: 0,
+};
 
 export interface CardProps {
   obj: CardInterface;
-  handleSwipe(direction: string): void;
+  handleSwipe?(direction: string): void;
 }
 
 const Card = ({ obj, handleSwipe }: CardProps) => {
   const onSwipe = (swipeDirection: direction) => {
-    if (swipeDirection === direction.RIGHT) {
-      // handle right swipe
-      console.log('right swipe');
-      handleSwipe(swipeDirection);
-      return;
-    }
-
-    if (swipeDirection === direction.LEFT) {
-      // handle left swipe
-      console.log('left swipe');
-      handleSwipe(swipeDirection);
-
-      return;
-    }
+    if (handleSwipe) handleSwipe(swipeDirection);
   };
 
   const onButtonSwipe = (swipeDirection: direction) => {
@@ -49,18 +48,18 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
     <div className='my-1 max-w-xl'>
       <Swipeable
         onSwipe={onSwipe}
-        fadeThreshold={200}
+        fadeThreshold={150}
         /* renderButtons={renderButtons} */
       >
         <div className='relative'>
           <img
-            style={{ width: '600px', minHeight: '500px' }}
-            className='object-cover'
+            style={{ width: '400px', minHeight: '500px' }}
+            className='object-cover rounded-xl'
             src={obj.image_url}
             alt={obj.title}
           />
-          <div className='absolute bottom-1'>
-            <Box title={obj.title} fullBorder={true}>
+          <div className='absolute bottom-0 px-4 '>
+            <Box title={obj.title} color={false}>
               <div className='text-xs overflow-y-scroll'>{obj.content}</div>
             </Box>
           </div>
@@ -70,12 +69,12 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
       <div className='flex justify-between'>
         <MyButton
           icon={<X color='red' />}
-          color='white'
+          color={MyButtonColor.gray}
           onClick={() => onButtonSwipe(direction.LEFT)}
         ></MyButton>
         <MyButton
           icon={<Heart color='green' />}
-          color='white'
+          color={MyButtonColor.gray}
           onClick={() => onButtonSwipe(direction.RIGHT)}
         ></MyButton>
       </div>

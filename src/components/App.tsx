@@ -1,9 +1,11 @@
 // import axios from 'axios';
-import data from './data';
+import data from '../data/data';
 import React, { Component } from 'react';
-import Card, { CardInterface } from './components/Card';
-import Box from './components/Box';
+import Card, { CardInterface, defaultCard } from './Card';
+import Box from './Box';
 import { direction } from 'react-deck-swiper';
+import ESGProfile from './ESGProfile';
+import MyButton, { MyButtonColor } from './MyButton';
 
 class App extends Component {
   state = {
@@ -21,7 +23,19 @@ class App extends Component {
     //   console.log(responses);
     //   this.setState({ responses, loading: false });
     // });
-    const responses = Object.values(data);
+    // const responses = Object.values(data);
+    const responses = [];
+    for (const [key, value] of Object.entries(data)) {
+      const resp = {
+        id: key,
+        image_url: value.image_url,
+        title: value.title,
+        content: value.content,
+        grade: value.grade,
+        choice: 0,
+      };
+      responses.push(resp);
+    }
     this.setState({ responses, loading: false });
   }
 
@@ -31,13 +45,24 @@ class App extends Component {
     let index = this.state.index;
 
     if (index < this.state.responses.length) {
+      const resp = this.state.responses[index];
+
       if (swipeDirection === direction.RIGHT) {
-        selectedCards.push(this.state.responses[index]);
-        this.setState({ selectedCards });
+        resp.choice = 1;
+      } else if (swipeDirection === direction.LEFT) {
+        resp.choice = -1;
       }
+      selectedCards.push(resp);
+
+      this.setState({ selectedCards });
+
       index++;
       this.setState({ index });
     }
+  };
+
+  tryAgain = () => {
+    this.setState({ index: 0, selectedCards: [] });
   };
 
   render() {
@@ -51,12 +76,10 @@ class App extends Component {
           <Box title='ESG Revolution'>
             {reachedLimit ? (
               <div>
-                <p className='font-bold'>
-                  Your have seen all the cards. Your selection:
-                </p>
-                {this.state.selectedCards.map((card) => (
-                  <p>-{card.title}</p>
-                ))}
+                <Card key={defaultCard.title} obj={defaultCard} />
+                <div className='flex items-center justify-center'>
+                  <MyButton text='Try again' onClick={this.tryAgain}></MyButton>
+                </div>
               </div>
             ) : (
               <Card
@@ -65,6 +88,7 @@ class App extends Component {
                 handleSwipe={this.handleSwipe}
               />
             )}
+            <ESGProfile selectedCards={this.state.selectedCards} />
           </Box>
         )}
       </div>
