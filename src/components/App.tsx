@@ -1,41 +1,24 @@
-// import axios from 'axios';
-import data from '../data/data';
 import React, { Component } from 'react';
-import Card, { CardInterface, defaultCard } from './Card';
+import Card, { defaultCard } from './Card';
+import { ArticleInterface } from '../models/Article';
 import Box from './Box';
 import { direction } from 'react-deck-swiper';
 import ESGProfile from './ESGProfile';
 import MyButton, { MyButtonColor } from './MyButton';
+import { getArticles } from '../services/getData';
 
 class App extends Component {
   state = {
     loading: false,
-    responses: [] as CardInterface[],
-    selectedCards: [] as CardInterface[],
+    responses: [] as ArticleInterface[],
+    selectedCards: [] as ArticleInterface[],
     index: 0,
   };
 
   componentDidMount() {
     this.setState({ loading: true });
-    // const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
-    // axios.get(url).then((response) => {
-    //   const responses = response.data as CardInterface;
-    //   console.log(responses);
-    //   this.setState({ responses, loading: false });
-    // });
-    // const responses = Object.values(data);
-    const responses = [];
-    for (const [key, value] of Object.entries(data)) {
-      const resp = {
-        id: key,
-        image_url: value.image_url,
-        title: value.title,
-        content: value.content,
-        grade: value.grade,
-        choice: 0,
-      };
-      responses.push(resp);
-    }
+
+    const responses = getArticles();
     this.setState({ responses, loading: false });
   }
 

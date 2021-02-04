@@ -1,31 +1,23 @@
 import React from 'react';
-import Box from './Box';
+import ESGRBox from './ESGRBox';
 import { Swipeable, direction } from 'react-deck-swiper';
 import MyButton, { MyButtonColor } from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
 import cardBack from '../img/card_back.png';
+import { ArticleInterface } from '../models/Article';
 
-export interface CardInterface {
-  id: string;
-  image_url: string;
-  title: string;
-  content: string;
-  grade: number;
-  choice: number;
-}
-
-export const defaultCard: CardInterface = {
+export const defaultCard: ArticleInterface = {
   id: 'xxx',
   image_url: cardBack,
-  title: 'No more cards',
-  content: '------------Please review your score below-------------',
+  title: 'You have reviewed all cards',
+  content: 'Please check your score below',
   grade: 0,
   choice: 0,
 };
 
 export interface CardProps {
-  obj: CardInterface;
+  obj: ArticleInterface;
   handleSwipe?(direction: string): void;
 }
 
@@ -53,15 +45,16 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
       >
         <div className='relative'>
           <img
-            style={{ width: '400px', minHeight: '500px' }}
-            className='object-cover rounded-xl'
+            style={{ height: '450px' }}
+            className='object-cover rounded-xl w-80'
             src={obj.image_url}
             alt={obj.title}
           />
-          <div className='absolute bottom-0 px-4 '>
-            <Box title={obj.title} color={false}>
-              <div className='text-xs overflow-y-scroll'>{obj.content}</div>
-            </Box>
+          <div className='absolute bottom-0 px-4 mx-4 bg-white rounded-t-lg overflow-auto h-40 '>
+            <div className='text-xl shadow text-center h1/3 overflow-auto'>
+              {obj.title}
+            </div>
+            <div className='text-xs h-2/3 overflow-auto'>{obj.content}</div>
           </div>
         </div>
       </Swipeable>

@@ -1,13 +1,14 @@
 import React from 'react';
-import { CardInterface } from './Card';
+import { ArticleInterface } from '../models/Article';
+
 import Box from './Box';
 import { LinearProgress } from '@material-ui/core';
 export interface ESGProfileProps {
-  selectedCards: CardInterface[];
+  selectedCards: ArticleInterface[];
 }
 
 const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
-  const lambda = 0.75;
+  const lambda = 0.95;
   console.log('lambda = ' + lambda);
   let averageGrade = 0;
   const n = selectedCards.length;
