@@ -223,9 +223,10 @@ export const data = [
   },
   {
     title: 'Zerohedge',
-    text: '...',
+    text:
+      'blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla ',
     grade: -0.5,
-    image_url: 'https://www.zerohedge.com/favicons/favicon.png',
+    image_url: 'https://upload.wikimedia.org/wikipedia/en/0/07/Lifetitle.jpg',
   },
   {
     title: 'Deforestation in Brazilian Amazon surges to 12-year high',

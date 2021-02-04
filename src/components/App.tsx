@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Card, { defaultCard } from './Card';
-import { ArticleInterface } from '../models/Article';
+import CardDeck from './CardDeck';
+import { ArticleInterface, defaultArticle } from '../models/Article';
 import Box from './Box';
 import { direction } from 'react-deck-swiper';
 import ESGProfile from './ESGProfile';
-import MyButton, { MyButtonColor } from './MyButton';
+import MyButton from './MyButton';
 import { getArticles } from '../services/getData';
 
 class App extends Component {
@@ -49,25 +49,34 @@ class App extends Component {
   };
 
   render() {
-    const resp = this.state.responses[this.state.index];
-    const reachedLimit = this.state.index >= this.state.responses.length;
+    const { loading, index } = this.state;
+    const len = this.state.responses.length;
+    const card = this.state.responses[index];
+    let nextCard = defaultArticle;
+    if (index < len - 1) nextCard = this.state.responses[index + 1];
+    const reachedLimit = index >= len;
     return (
       <div className='mx-auto p-1'>
-        {this.state.loading || this.state.responses.length === 0 ? (
+        {loading || len === 0 ? (
           <div>Loading...</div>
         ) : (
           <Box title='ESG Revolution'>
             {reachedLimit ? (
               <div>
-                <Card key={defaultCard.title} obj={defaultCard} />
+                <CardDeck
+                  key={defaultArticle.title}
+                  card={defaultArticle}
+                  nextCard={defaultArticle}
+                />
                 <div className='flex items-center justify-center'>
                   <MyButton text='Try again' onClick={this.tryAgain}></MyButton>
                 </div>
               </div>
             ) : (
-              <Card
-                key={resp.title}
-                obj={resp}
+              <CardDeck
+                key={card.title}
+                card={card}
+                nextCard={nextCard}
                 handleSwipe={this.handleSwipe}
               />
             )}

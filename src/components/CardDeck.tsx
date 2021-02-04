@@ -1,27 +1,18 @@
 import React from 'react';
-import ESGRBox from './ESGRBox';
 import { Swipeable, direction } from 'react-deck-swiper';
 import MyButton, { MyButtonColor } from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
-import cardBack from '../img/card_back.png';
 import { ArticleInterface } from '../models/Article';
-
-export const defaultCard: ArticleInterface = {
-  id: 'xxx',
-  image_url: cardBack,
-  title: 'You have reviewed all cards',
-  content: 'Please check your score below',
-  grade: 0,
-  choice: 0,
-};
+import CardFace from './CardFace';
 
 export interface CardProps {
-  obj: ArticleInterface;
+  card: ArticleInterface;
+  nextCard: ArticleInterface;
   handleSwipe?(direction: string): void;
 }
 
-const Card = ({ obj, handleSwipe }: CardProps) => {
+const CardDeck = ({ card, nextCard, handleSwipe }: CardProps) => {
   const onSwipe = (swipeDirection: direction) => {
     if (handleSwipe) handleSwipe(swipeDirection);
   };
@@ -38,26 +29,18 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
 
   return (
     <div className='my-1 max-w-xl'>
-      <Swipeable
-        onSwipe={onSwipe}
-        fadeThreshold={150}
-        /* renderButtons={renderButtons} */
-      >
-        <div className='relative'>
-          <img
-            style={{ height: '450px' }}
-            className='object-cover rounded-xl w-80'
-            src={obj.image_url}
-            alt={obj.title}
-          />
-          <div className='absolute bottom-0 px-4 mx-4 bg-white rounded-t-lg overflow-auto h-40 '>
-            <div className='text-xl shadow text-center h1/3 overflow-auto'>
-              {obj.title}
-            </div>
-            <div className='text-xs h-2/3 overflow-auto'>{obj.content}</div>
-          </div>
+      <div className='relative'>
+        <CardFace card={nextCard} />
+        <div className='absolute bottom-0'>
+          <Swipeable
+            onSwipe={onSwipe}
+            fadeThreshold={150}
+            /* renderButtons={renderButtons} */
+          >
+            <CardFace card={card} />
+          </Swipeable>
         </div>
-      </Swipeable>
+      </div>
 
       <div className='flex justify-between'>
         <MyButton
@@ -75,4 +58,4 @@ const Card = ({ obj, handleSwipe }: CardProps) => {
   );
 };
 
-export default Card;
+export default CardDeck;

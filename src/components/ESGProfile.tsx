@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArticleInterface } from '../models/Article';
 
-import Box from './Box';
+// import Box from './Box';
 import { LinearProgress } from '@material-ui/core';
 export interface ESGProfileProps {
   selectedCards: ArticleInterface[];
