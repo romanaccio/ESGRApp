@@ -2,7 +2,7 @@ import React from 'react';
 import { ArticleInterface } from '../models/Article';
 
 // import Box from './Box';
-import { LinearProgress } from '@material-ui/core';
+import { BorderLinearProgress } from './BiggerLinearProgress';
 export interface ESGProfileProps {
   selectedCards: ArticleInterface[];
 }
@@ -39,14 +39,14 @@ const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
         {averageGrade >= 0 ? (
           <>
             <div className='flex-1 w-1/2 transform rotate-180'>
-              <LinearProgress
+              <BorderLinearProgress
                 variant='determinate'
                 value={0}
                 color='secondary'
               />
             </div>
             <div className='flex-1 w-1/2'>
-              <LinearProgress
+              <BorderLinearProgress
                 variant='determinate'
                 value={averageGrade * 100}
               />
@@ -55,14 +55,14 @@ const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
         ) : (
           <>
             <div className='flex-1 transform rotate-180'>
-              <LinearProgress
+              <BorderLinearProgress
                 variant='determinate'
                 value={-averageGrade * 100}
                 color='secondary'
               />
             </div>
             <div className='flex-1'>
-              <LinearProgress variant='determinate' value={0} />
+              <BorderLinearProgress variant='determinate' value={0} />
             </div>
           </>
         )}

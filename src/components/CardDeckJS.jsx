@@ -3,31 +3,23 @@ import { Swipeable, direction } from 'react-deck-swiper';
 import MyButton, { MyButtonColor } from './MyButton';
 import Heart from '../icons/Heart';
 import X from '../icons/X';
-import { ArticleInterface } from '../models/Article';
 import CardFace from './CardFace';
-import { RenderButtonsPayload } from 'react-deck-swiper/dist/components/SwipeableWrapper';
 import CardButtons from './CardButtons';
-export interface CardProps {
-  card: ArticleInterface;
-  nextCard: ArticleInterface;
-  handleSwipe(direction: string): void;
-}
 
-const CardDeck = ({ card, nextCard, handleSwipe }: CardProps) => {
-  const onSwipe = (swipeDirection: direction) => {
+// this is a JavaScript version of CardDeck.tsx
+// renderButtons works but doesn't do what I want: do the swipe animation
+const CardDeckJS = ({ card, nextCard, handleSwipe }) => {
+  const onSwipe = (swipeDirection) => {
     if (handleSwipe) handleSwipe(swipeDirection);
   };
 
-  const onButtonSwipe = (swipeDirection: direction) => {
-    // FIXME : must find a way to execute the swipe animation
-
+  const onButtonSwipe = (swipeDirection) => {
     onSwipe(swipeDirection);
   };
 
-  // renderButtons cannot be used in TypeScript: use CardDeckJS if you want to use it
-  /*   const renderButtons = ({ right, left }: RenderButtonsPayload) => (
+  const renderButtons = ({ right, left }) => (
     <CardButtons right={right} left={left} />
-  ); */
+  );
 
   return (
     <div className='my-1 max-w-xl'>
@@ -60,4 +52,4 @@ const CardDeck = ({ card, nextCard, handleSwipe }: CardProps) => {
   );
 };
 
-export default CardDeck;
+export default CardDeckJS;

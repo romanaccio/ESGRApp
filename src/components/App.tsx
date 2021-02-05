@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardDeck from './CardDeck';
+// import CardDeckJS from './CardDeckJS';
 import { ArticleInterface, defaultArticle } from '../models/Article';
 import Box from './Box';
 import { direction } from 'react-deck-swiper';
@@ -67,6 +68,7 @@ class App extends Component {
                   key={defaultArticle.title}
                   card={defaultArticle}
                   nextCard={defaultArticle}
+                  handleSwipe={() => console.log('swipe disabled')}
                 />
                 <div className='flex items-center justify-center'>
                   <MyButton text='Try again' onClick={this.tryAgain}></MyButton>
