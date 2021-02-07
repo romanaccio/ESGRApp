@@ -61,6 +61,7 @@ class Survey extends Component<SurveyProps> {
     // parameters as per the spec
     const { loading, index } = this.state;
     const len = this.state.responses.length;
+
     const card = this.state.responses[index];
     let nextCard = defaultArticle;
     if (index < len - 1) nextCard = this.state.responses[index + 1];
