@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import App from '../App';
+import Survey from '../Survey';
 
 test('title', () => {
-  render(<App />);
+  render(<Survey />);
   const title = screen.getByText(/ESG Revolution/i);
   expect(title).toBeInTheDocument();
 });

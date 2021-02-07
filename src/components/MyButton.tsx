@@ -28,9 +28,12 @@ const MyButton = ({
   children,
 }: MyButtonInterface) => {
   // the following 3 lines are used to make sure tree shaking won't remove those Tailwind classes
+  // eslint-disable-next-line
   const trickIndigo =
     'bg-indigo-100 active:bg-indigo-200 bg-indigo-300 active:bg-indigo-400';
+  // eslint-disable-next-line
   const trickRed = 'bg-red-100 active:bg-red-200 bg-red-300 active:bg-red-400';
+  // eslint-disable-next-line
   const trickGray =
     'bg-gray-100 active:bg-gray-200 bg-gray-300 active:bg-gray-400';
 

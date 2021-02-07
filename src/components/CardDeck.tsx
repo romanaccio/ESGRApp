@@ -5,15 +5,23 @@ import Heart from '../icons/Heart';
 import X from '../icons/X';
 import { ArticleInterface } from '../models/Article';
 import CardFace from './CardFace';
-import { RenderButtonsPayload } from 'react-deck-swiper/dist/components/SwipeableWrapper';
-import CardButtons from './CardButtons';
+// import { RenderButtonsPayload } from 'react-deck-swiper/dist/components/SwipeableWrapper';
+// import CardButtons from './CardButtons';
 export interface CardProps {
   card: ArticleInterface;
   nextCard: ArticleInterface;
   handleSwipe(direction: string): void;
+  legend?: string;
+  displayButtons?: boolean;
 }
 
-const CardDeck = ({ card, nextCard, handleSwipe }: CardProps) => {
+const CardDeck = ({
+  card,
+  nextCard,
+  handleSwipe,
+  legend,
+  displayButtons = true,
+}: CardProps) => {
   const onSwipe = (swipeDirection: direction) => {
     if (handleSwipe) handleSwipe(swipeDirection);
   };
@@ -44,17 +52,23 @@ const CardDeck = ({ card, nextCard, handleSwipe }: CardProps) => {
         </div>
       </div>
 
-      <div className='flex justify-between'>
-        <MyButton
-          icon={<X color='red' />}
-          color={MyButtonColor.gray}
-          onClick={() => onButtonSwipe(direction.LEFT)}
-        ></MyButton>
-        <MyButton
-          icon={<Heart color='blue' />}
-          color={MyButtonColor.gray}
-          onClick={() => onButtonSwipe(direction.RIGHT)}
-        ></MyButton>
+      <div className='flex justify-between pt-2'>
+        {displayButtons ? (
+          <MyButton
+            icon={<X color='red' />}
+            color={MyButtonColor.gray}
+            onClick={() => onButtonSwipe(direction.LEFT)}
+          ></MyButton>
+        ) : null}
+
+        {legend ? <p className='text-center text-xs pt-2'>{legend}</p> : null}
+        {displayButtons ? (
+          <MyButton
+            icon={<Heart color='blue' />}
+            color={MyButtonColor.gray}
+            onClick={() => onButtonSwipe(direction.RIGHT)}
+          ></MyButton>
+        ) : null}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArticleInterface } from '../models/Article';
+import { calculateScore } from '../util/calculateScore';
 
 // import Box from './Box';
 import { BorderLinearProgress } from './BiggerLinearProgress';
@@ -8,35 +9,12 @@ export interface ESGProfileProps {
 }
 
 const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
-  const lambda = 0.95;
-  console.log('lambda = ' + lambda);
-  let averageGrade = 0;
-  const n = selectedCards.length;
-  if (n > 0)
-    averageGrade =
-      selectedCards.reduce(
-        (accumulator, currentValue, index) =>
-          accumulator +
-          currentValue.grade *
-            currentValue.choice *
-            Math.pow(lambda, n - 1 - index),
-        0
-      ) /
-      selectedCards.reduce(
-        (accumulator, currentValue, index) =>
-          accumulator +
-          Math.abs(
-            currentValue.grade *
-              currentValue.choice *
-              Math.pow(lambda, n - 1 - index)
-          ),
-        0
-      );
+  const score = calculateScore(selectedCards);
   return (
     <div className='p-5'>
       {/*     <Box color={false}> */}
       <div className='flex space-x-4'>
-        {averageGrade >= 0 ? (
+        {score >= 0 ? (
           <>
             <div className='flex-1 w-1/2 transform rotate-180'>
               <BorderLinearProgress
@@ -46,10 +24,7 @@ const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
               />
             </div>
             <div className='flex-1 w-1/2'>
-              <BorderLinearProgress
-                variant='determinate'
-                value={averageGrade * 100}
-              />
+              <BorderLinearProgress variant='determinate' value={score * 100} />
             </div>
           </>
         ) : (
@@ -57,7 +32,7 @@ const ESGProfile = ({ selectedCards }: ESGProfileProps) => {
             <div className='flex-1 transform rotate-180'>
               <BorderLinearProgress
                 variant='determinate'
-                value={-averageGrade * 100}
+                value={-score * 100}
                 color='secondary'
               />
             </div>

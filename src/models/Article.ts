@@ -7,6 +7,7 @@ export interface ArticleInterface {
   content: string;
   grade: number;
   choice: number;
+  quality: number;
 }
 
 export const defaultArticle: ArticleInterface = {
@@ -16,4 +17,5 @@ export const defaultArticle: ArticleInterface = {
   content: 'Please check your score below',
   grade: 0,
   choice: 0,
+  quality: 1,
 };

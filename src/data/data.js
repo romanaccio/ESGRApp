@@ -6,6 +6,7 @@ export const testData = [
     grade: 0.5,
     image_url:
       'https://images.glaciermedia.ca/polopoly_fs/1.24248060.1606775952!/fileImage/httpImage/image.jpg_gen/derivatives/facebookogimage_560_292/sonic-forest.jpg',
+    quality: 1,
   },
   {
     title:
@@ -15,6 +16,7 @@ export const testData = [
     grade: 0.0,
     image_url:
       'https://cdn-prod.opendemocracy.net/media/images/PA-56297539.2e16d0ba.fill-1200x630.jpg',
+    quality: 1,
   },
 ];
 
@@ -26,6 +28,7 @@ export const data = [
     grade: 0.5,
     image_url:
       'https://images.glaciermedia.ca/polopoly_fs/1.24248060.1606775952!/fileImage/httpImage/image.jpg_gen/derivatives/facebookogimage_560_292/sonic-forest.jpg',
+    quality: 1,
   },
   {
     title:
@@ -35,6 +38,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://cdn-prod.opendemocracy.net/media/images/PA-56297539.2e16d0ba.fill-1200x630.jpg',
+    quality: 1,
   },
   {
     title: 'Amazon deforestation skyrockets to 12-year-high under Bolsonaro',
@@ -43,6 +47,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://static.ffx.io/images/$zoom_0.1969%2C$multiply_0.7554%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_108/t_crop_custom/q_86%2Cf_auto/t_smh_no_label_no_age_social_wm/463e9f4ea0805550be3ea7a29b32c6e0b4bafcc2',
+    quality: 1,
   },
   {
     title:
@@ -52,6 +57,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://www.thesundaily.my/news-portlet/img/ogimage_default.jpg',
+    quality: 0,
   },
   {
     title:
@@ -61,6 +67,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://cna-sg-res.cloudinary.com/image/upload/q_auto,f_auto/image/13538884/16x9/991/557/be6fbae3113535a3ba148037a8f5666/HR/file-photo--smoke-billows-during-a-fire-in-an-area-of-the-amazon-rainforest-near-porto-velho-1.jpg',
+    quality: 1,
   },
   {
     title:
@@ -69,6 +76,7 @@ export const data = [
       "Deforestation in Brazil's Amazon rainforest has surged to a 12-year high, with the destruction soaring since President Jair Bolsonaro took office and weakened environmental protections.\n\nKey points: Deforestation was up more than 9 per cent this year\n\nDeforestation was up more than 9 per cent this y...",
     grade: -1.0,
     image_url: 'https://www.abc.net.au/cm/rimage/12937822-16x9-large.jpg?v=2',
+    quality: 1,
   },
   {
     title: 'Deforestation in Amazon skyrockets to 12-year high',
@@ -77,6 +85,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://connect-images.viago.io/w_480,c_scale,e_sharpen:80,q_95/266c9fcdd7c8786e34a2320bb306004dc2da698840563139e353e0d4980b08ac',
+    quality: 1,
   },
   {
     title: 'Positioning ESG Portfolios in the Next Administration',
@@ -85,6 +94,7 @@ export const data = [
     grade: 0.5,
     image_url:
       'https://www.etftrends.com/wp-content/uploads/2020/11/Positioning-ESG-Portfolios-in-the-Next-Administration.jpg',
+    quality: 1,
   },
   {
     title: 'Fighting for Corporate Responsibility',
@@ -93,6 +103,7 @@ export const data = [
     grade: 1.0,
     image_url:
       'https://1bps6437gg8c169i0y1drtgz-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/BLK_Defund_Deforestation_brookeanderson-36-scaled.jpg',
+    quality: 1,
   },
   {
     title:
@@ -102,6 +113,7 @@ export const data = [
     grade: -0.2,
     image_url:
       'https://www.thehindu.com/news/international/e4hbql/article33218421.ece/ALTERNATES/LANDSCAPE_615/CHOCOLATE',
+    quality: 1,
   },
   {
     title: 'Indonesia drafting regulations for the sale of carbon credits',
@@ -110,6 +122,7 @@ export const data = [
     grade: 0.4,
     image_url:
       'https://s1.reutersmedia.net/resources_v2/images/rcom-default.png?w=800',
+    quality: 1,
   },
   {
     title:
@@ -119,6 +132,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://imgs.mongabay.com/wp-content/uploads/sites/20/2020/09/01155309/GP0STURQJ_AmazonFiresAug20_PressMedia-768x512.jpg',
+    quality: 1,
   },
   {
     title:
@@ -128,6 +142,7 @@ export const data = [
     grade: 0.2,
     image_url:
       'https://eco-business.imgix.net/ebmedia/fileuploads/Olivier_2.JPG?fit=crop&h=801&ixlib=django-1.2.0&q=85&w=1200',
+    quality: 1,
   },
   {
     title:
@@ -137,6 +152,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://cdn.jagonews24.com/media/imgAllNew/BG/2019November/amazonb-20201201085635.jpg',
+    quality: 1,
   },
   {
     title:
@@ -145,6 +161,7 @@ export const data = [
       "West Papuan separatists say they will form a new provisional government for the region and reject Indonesia's rule, in a significant escalation of a decades-long battle over independence.\n\nThe United Liberation Movement for West Papua (ULMWP) \u2014 a coalition of independence groups \u2014 made the announcem...",
     grade: 0.0,
     image_url: 'https://www.abc.net.au/cm/rimage/12913736-16x9-large.jpg?v=2',
+    quality: 1,
   },
   {
     title:
@@ -153,6 +170,7 @@ export const data = [
       'By Mark Isherwood, MS for North Wales\n\nAlmost five-and-half-years after the Labour Welsh Government were forced to place Betsi Cadwaladr University Health Board in special measures, the Health Minister made the shock announcement that he was lifting it out of special measures, despite the Health Boa...',
     grade: 0.0,
     image_url: 'https://www.leaderlive.co.uk/resources/images/11931772/',
+    quality: 1,
   },
   {
     title: 'News reader',
@@ -161,6 +179,7 @@ export const data = [
     grade: 0.4,
     image_url:
       'http://www.pina.com.fj/x-2/picture/news/thumb0112201b0535700.jpeg',
+    quality: 1,
   },
   {
     title: 'NRZ Hosts Bulawayo\u2019s National Tree Planting Day',
@@ -169,6 +188,7 @@ export const data = [
     grade: 0.5,
     image_url:
       'https://s3-eu-west-2.amazonaws.com/newzimlive/wp-content/uploads/2020/02/02063635/Tree-e1580625421151.jpg',
+    quality: 1,
   },
   {
     title:
@@ -178,6 +198,7 @@ export const data = [
     grade: 0.5,
     image_url:
       'https://s1.reutersmedia.net/resources_v2/images/rcom-default.png?w=800',
+    quality: 1,
   },
   {
     title: 'Yellen nomination, ESM reform, mega data deal',
@@ -186,6 +207,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'http://delano.lu/sites/default/files/styles/640_427_echelle_recadrage/public/externals/a79b8bd629ee2c53837a9dc657c486a8.jpg?itok=KMLt9Pzp',
+    quality: 1,
   },
   {
     title:
@@ -195,6 +217,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://i0.wp.com/www.vanguardngr.com/wp-content/uploads/2020/11/43-farmers.jpg?fit=600%2C450&ssl=1',
+    quality: 1,
   },
   {
     title: "Deforestation in Brazil's Amazon surges to 12-year high",
@@ -202,6 +225,7 @@ export const data = [
       "Deforestation in the Brazilian Amazon surged again over the past year, hitting a 12-year high, according to official figures that drew a chorus of condemnation of President Jair Bolsonaro's government.\n\nA total of 11,088 square kilometers of forest was destroyed in Brazil's share of the world's bigg...",
     grade: -1.0,
     image_url: 'https://img.rasset.ie/0015cc48-1600.jpg',
+    quality: 1,
   },
   {
     title:
@@ -211,6 +235,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://img.republicworld.com/republic-prod/stories/promolarge/xxhdpi/ahy3jwbofhnrccwu_1606811643.jpeg?tr=f-jpeg',
+    quality: 1,
   },
   {
     title:
@@ -220,6 +245,7 @@ export const data = [
     grade: -0.2,
     image_url:
       'https://content.geneticliteracyproject.org/wp-content/uploads/2020/12/transgenicos-gettyimage-.jpg',
+    quality: 1,
   },
   {
     title: 'Zerohedge',
@@ -227,6 +253,7 @@ export const data = [
       'blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla ',
     grade: -0.5,
     image_url: 'https://upload.wikimedia.org/wikipedia/en/0/07/Lifetitle.jpg',
+    quality: 0,
   },
   {
     title: 'Deforestation in Brazilian Amazon surges to 12-year high',
@@ -235,6 +262,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'http://cnnphilippines.com/.imaging/mte/demo-cnn-new/750x450/dam/cnn/2020/12/1/Amazon-Tribe_CNNPH.jpg/jcr:content/Amazon-Tribe_CNNPH.jpg',
+    quality: 1,
   },
   {
     title: 'Deforestation in Amazon shoots up to 12-year high in 2020',
@@ -243,6 +271,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://s01.sgp1.cdn.digitaloceanspaces.com/book/127893-ctecpqhdzf-1569313413.jpg',
+    quality: 1,
   },
   {
     title: 'Zim-Swiss Relations Blossom',
@@ -251,6 +280,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://s3-eu-west-2.amazonaws.com/newzimlive/wp-content/uploads/2020/09/23053436/Mnangagwa1.jpg',
+    quality: 1,
   },
   {
     title:
@@ -260,6 +290,7 @@ export const data = [
     grade: -0.2,
     image_url:
       'https://ca-times.brightspotcdn.com/dims4/default/b0e05df/2147483647/strip/true/crop/2048x1075+0+38/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff8%2F49%2F111a4e4cf0cb706eb2c3b9e0f68e%2Fla-1467307748-snap-photo',
+    quality: 1,
   },
   {
     title:
@@ -269,6 +300,7 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://static.euronews.com/articles/stories/05/16/61/84/1000x563_cmsv2_4e1ceeb8-b95d-50af-8464-d10491c00339-5166184.jpg',
+    quality: 1,
   },
   {
     title: 'Trees can help slow climate change, but at a cost',
@@ -277,6 +309,7 @@ export const data = [
     grade: 1.0,
     image_url:
       'https://presspage-production-content.s3.amazonaws.com/uploads/2170/500_brentsohngen.jpg?x=1606324294695',
+    quality: 1,
   },
   {
     title:
@@ -286,6 +319,7 @@ export const data = [
     grade: 1.0,
     image_url:
       'https://s.abcnews.com/images/International/brazil-gty-er-201130_1606775226556_hpMain_16x9_992.jpg',
+    quality: 1,
   },
   {
     title:
@@ -295,6 +329,7 @@ export const data = [
     grade: 0.2,
     image_url:
       'https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/food-beverage-nutrition/confectionerynews.com/article/2020/12/01/ghana-and-cote-d-ivoire-cancel-hershey-s-sustainability-programmes-as-row-over-cheap-cocoa-beans-intensifies/11991893-1-eng-GB/Ghana-and-Cote-d-Ivoire-cancel-Hershey-s-sustainability-programmes-as-row-over-cheap-cocoa-beans-intensifies.jpg',
+    quality: 1,
   },
   {
     title:
@@ -304,6 +339,7 @@ export const data = [
     grade: 0.4,
     image_url:
       'https://static.reuters.com/resources/r/?m=02&d=20201201&t=2&i=1543072997&r=LYNXMPEGB0334&w=800',
+    quality: 1,
   },
   {
     title:
@@ -313,6 +349,7 @@ export const data = [
     grade: 1.0,
     image_url:
       'https://images.newscientist.com/wp-content/uploads/2020/12/01122742/gettyimages-157374501_web-1.jpg',
+    quality: 1,
   },
   {
     title:
@@ -322,6 +359,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://media.pri.org/s3fs-public/styles/open_graph/public/images/2020/12/2020-12-01-china-australia.jpg?itok=fwnA2rac',
+    quality: 1,
   },
   {
     title: 'Armed robbers shoot at least 2 in Brazilian coastal city',
@@ -330,6 +368,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://cdnph.upi.com/sv/ph/og/upi_com/3191606838440/2020/1/21f1f3e24b83bb58a04cc80812ad5c69/v1.5/Armed-robbers-shoot-at-least-2-in-Brazilian-coastal-city.jpg',
+    quality: 0,
   },
   {
     title:
@@ -339,6 +378,7 @@ export const data = [
     grade: 0.0,
     image_url:
       'https://cdnph.upi.com/sv/ph/og/i/5731606846235/2020/1/16068465759735/v1.5/Oshkosh-nabs-911M-for-JLTVs-for-US-Lithuania-Brazil-Macedonia.jpg',
+    quality: 1,
   },
   {
     title:
@@ -347,6 +387,7 @@ export const data = [
       'Significance The trade in agricultural commodities is a mainstay of the globalized economy, though the complex nature of commodity supply chains makes it difficult to identify the origin of and impact embedded in products. We brought together detailed data on trade, agriculture, and logistics to pro...',
     grade: 0.0,
     image_url: 'https://www.pnas.org/content/117/50/31770/F1.large.jpg',
+    quality: 1,
   },
   {
     title:
@@ -356,6 +397,7 @@ export const data = [
     grade: -0.5,
     image_url:
       'https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/food-beverage-nutrition/foodnavigator.com/article/2020/12/01/food-industry-failing-to-address-supply-chain-emissions-engagement-is-relatively-shallow/11989541-1-eng-GB/Food-industry-failing-to-address-supply-chain-emissions-Engagement-is-relatively-shallow.jpg',
+    quality: 1,
   },
   {
     title:
@@ -365,5 +407,6 @@ export const data = [
     grade: -1.0,
     image_url:
       'https://static.standard.co.uk/2020/12/01/09/AFP_8W87MD.jpg?width=1200',
+    quality: 1,
   },
 ];
