@@ -10,7 +10,7 @@ import CardFace from './CardFace';
 export interface CardProps {
   card: ArticleInterface;
   nextCard: ArticleInterface;
-  handleSwipe(direction: string): void;
+  handleSwipe(direction: string, card: ArticleInterface): void;
   legend?: string;
   displayButtons?: boolean;
 }
@@ -23,7 +23,7 @@ const CardDeck = ({
   displayButtons = true,
 }: CardProps) => {
   const onSwipe = (swipeDirection: direction) => {
-    if (handleSwipe) handleSwipe(swipeDirection);
+    if (handleSwipe) handleSwipe(swipeDirection, card);
   };
 
   const onButtonSwipe = (swipeDirection: direction) => {
