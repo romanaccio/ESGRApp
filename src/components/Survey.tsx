@@ -30,6 +30,7 @@ class Survey extends Component<SurveyProps> {
     databaseCards: [] as ArticleInterface[],
     selectedCards: [] as ArticleInterface[],
     cardsPulled: 0,
+    surveyStartTimestamp: 0,
   };
 
   MAX_CARDS_TO_PULL = 10; // this has to be a positive integer
@@ -52,6 +53,7 @@ class Survey extends Component<SurveyProps> {
       databaseCards,
       cardsPulled: 0,
       loading: false,
+      surveyStartTimestamp: Date.now(),
     });
   }
 
@@ -78,12 +80,12 @@ class Survey extends Component<SurveyProps> {
         const username = this.props.location.state.username
           ? this.props.location.state.username
           : 'unknown';
-        const report = {
+        const surveyReport = {
           username,
-          timestamp: Date.now(),
+          reportStart: this.state.surveyStartTimestamp,
           data: articlesToReport(selectedCards),
         };
-        writeReport(report);
+        writeReport(surveyReport);
       }
       cardsPulled++;
       this.setState({ selectedCards, databaseCards, cardsPulled });
@@ -95,6 +97,7 @@ class Survey extends Component<SurveyProps> {
       cardsPulled: 0,
       databaseCards: [...this.state.initialDatabaseCards],
       selectedCards: [],
+      surveyStartTimestamp: Date.now(),
     });
   };
 

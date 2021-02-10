@@ -2,7 +2,7 @@ import axios from 'axios';
 
 interface ReportInterface {
   username: string;
-  timestamp: number;
+  reportStart: number;
   data: any;
 }
 export const writeReport = (report: ReportInterface): void => {
