@@ -9,6 +9,8 @@ import MyButton from './MyButton';
 import { getArticles } from '../services/getData';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { calculateScore } from '../util/calculateScore';
+import { writeReport } from '../services/writeReport';
+import { articlesToReport } from '../models/Article';
 
 type NextPair = {
   card: ArticleInterface;
@@ -68,9 +70,22 @@ class Survey extends Component<SurveyProps> {
       } else if (swipeDirection === direction.LEFT) {
         card.choice = -1;
       }
-      cardsPulled++;
+      card.timestamp = Date.now();
       selectedCards.push(card);
       databaseCards.splice(index, 1);
+      if (this.reachedLimit(cardsPulled + 1)) {
+        // if this pull is the last, send report to backend
+        const username = this.props.location.state.username
+          ? this.props.location.state.username
+          : 'unknown';
+        const report = {
+          username,
+          timestamp: Date.now(),
+          data: articlesToReport(selectedCards),
+        };
+        writeReport(report);
+      }
+      cardsPulled++;
       this.setState({ selectedCards, databaseCards, cardsPulled });
     }
   };
@@ -102,10 +117,10 @@ class Survey extends Component<SurveyProps> {
     return indexOfMax;
   };
 
-  selectNextCard = (cards: ArticleInterface[]): NextPair => {
-    // build scores of all available cards
-    const currentScore = calculateScore(this.state.selectedCards);
-
+  selectNextCard = (
+    cards: ArticleInterface[],
+    currentScore: number
+  ): NextPair => {
     const databaseCards = [...cards];
     let firstCard = defaultArticle;
     let secondCard = defaultArticle;
@@ -120,11 +135,23 @@ class Survey extends Component<SurveyProps> {
     return { card: firstCard, nextCard: secondCard };
   };
 
+  reachedLimit = (cardsPulled: number): boolean => {
+    return cardsPulled >= this.MAX_CARDS_TO_PULL;
+  };
+
   render() {
     const { loading, cardsPulled } = this.state;
-    const reachedLimit = cardsPulled >= this.MAX_CARDS_TO_PULL;
-    const nextPair = this.selectNextCard(this.state.databaseCards);
+    const reachedLimit = this.reachedLimit(cardsPulled);
+    const currentScore = calculateScore(this.state.selectedCards);
+
+    const nextPair = this.selectNextCard(
+      this.state.databaseCards,
+      currentScore
+    );
     let { card, nextCard } = nextPair;
+    // store score in card for the record
+    card.calculatedScore = currentScore;
+
     if (cardsPulled === this.MAX_CARDS_TO_PULL - 1) nextCard = defaultArticle;
 
     const username = this.props.location.state.username

@@ -8,6 +8,8 @@ export interface ArticleInterface {
   grade: number;
   choice: number;
   quality: number;
+  timestamp?: number;
+  calculatedScore?: number;
 }
 
 export const defaultArticle: ArticleInterface = {
@@ -18,4 +20,12 @@ export const defaultArticle: ArticleInterface = {
   grade: 0,
   choice: 0,
   quality: 1,
+};
+
+export const articlesToReport = (articles: ArticleInterface[]) => {
+  return articles.map(({ id, timestamp, calculatedScore }) => ({
+    id,
+    timestamp,
+    calculatedScore,
+  }));
 };
