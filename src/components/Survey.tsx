@@ -17,10 +17,13 @@ type NextPair = {
   nextCard: ArticleInterface;
 };
 
-type StateType = {
-  username: string;
-  testsize: string;
-};
+type StateType =
+  | {
+      username: string;
+      testsize: string;
+    }
+  | any; // any is a way to trick the TS compiler so that I can this.props.history.push anything
+
 type SurveyProps = RouteComponentProps<{}, {}, StateType>;
 
 class Survey extends Component<SurveyProps> {
@@ -75,18 +78,7 @@ class Survey extends Component<SurveyProps> {
       card.timestamp = Date.now();
       selectedCards.push(card);
       databaseCards.splice(index, 1);
-      if (this.reachedLimit(cardsPulled + 1)) {
-        // if this pull is the last, send report to backend
-        const username = this.props.location.state.username
-          ? this.props.location.state.username
-          : 'unknown';
-        const surveyReport = {
-          username,
-          reportStart: this.state.surveyStartTimestamp,
-          data: articlesToReport(selectedCards),
-        };
-        writeReport(surveyReport);
-      }
+
       cardsPulled++;
       this.setState({ selectedCards, databaseCards, cardsPulled });
     }
@@ -98,6 +90,28 @@ class Survey extends Component<SurveyProps> {
       databaseCards: [...this.state.initialDatabaseCards],
       selectedCards: [],
       surveyStartTimestamp: Date.now(),
+    });
+  };
+
+  goToResults = () => {
+    // 1. save results to db
+    const { cardsPulled, selectedCards } = this.state;
+
+    if (this.reachedLimit(cardsPulled)) {
+      const username = this.props.location.state.username
+        ? this.props.location.state.username
+        : 'unknown';
+      const surveyReport = {
+        username,
+        reportStart: this.state.surveyStartTimestamp,
+        data: articlesToReport(selectedCards),
+      };
+      writeReport(surveyReport);
+    }
+    // 2. go to results page
+    this.props.history.push({
+      pathname: '/results',
+      state: { selectedCards: this.state.selectedCards },
     });
   };
 
@@ -177,7 +191,11 @@ class Survey extends Component<SurveyProps> {
                   displayButtons={false}
                 />
                 <div className='flex items-center justify-center'>
-                  <MyButton text='Try again' onClick={this.tryAgain}></MyButton>
+                  <MyButton text='Redo test' onClick={this.tryAgain}></MyButton>
+                  <MyButton
+                    text='Validate test'
+                    onClick={this.goToResults}
+                  ></MyButton>
                 </div>
               </div>
             ) : (

@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Description of the ESGR app project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+It is a simple React app (using Typescript for the code and Tailwind for the CSS) that runs a tinder-like presentation of articles related to environmental topics : the user indicates if he or she likes (right swipe) or dislikes (left swipe) the content.
+A score is computed based on those decisions, using an algorithm which is coded inside function calculateScore.
+Please also note that cards are presented in a certain order, based on the above algorithm and other parameters (see class Survey, method getMaximizedCard).
+
+Data source: currently, articles comme from a hardcoded file inside the project (data.json).
+This should become an exxternal source eventually (REST API probably).
+
+Data sink: a backend is implemented in a separate project (ESGR-backend) to store the results of tests. The url of that backend has to be set inside envrironment variable REACT_APP_ESGR_BACKEND_URL.
+One way to set it is to define it in a .env file. This works fine in development mode.
+If the ESGR App is hosted on Netlify, the REACT_APP_ESGR_BACKEND_URL can be set inside a build & deploy environment variable in the dashboard.
 
 ## Available Scripts
 

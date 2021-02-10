@@ -1,10 +1,11 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import Results from '../components/Results';
 
 const ResultsPage = () => {
   return (
-    <div className='flex h-screen justify-center items-center'>
-      <p className='text-center text-4xl font-bold'>Sorry, not results yet!</p>
+    <div>
+      <Results />
       <Footer />
     </div>
   );
